@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Localizacion>
+	<posicion>
+		<localidad>Zaragoza</localidad>
+		<x>41,669773</x>
+		<y>-0,905464</y>
+	</posicion>
+	<posicion>
+		<localidad>Madrid</localidad>
+		<x>40,412984</x>
+		<y>-3,701123</y>
+	</posicion>
+	<posicion>
+		<localidad>Viver de la Sierra</localidad>
+		<x>41,474829</x>
+		<y>-1,638415</y>
+	</posicion>
+</Localizacion>

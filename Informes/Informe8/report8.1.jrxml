@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report8.1" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e591a0e8-324d-4525-bd64-fd72f5c02167">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="133"/>
+	<style name="Crosstab Data Text" hAlign="Center"/>
+	<subDataset name="ALUMNOS_CURSOS_LOCALIDAD" uuid="97501e6a-4d5a-41b7-89d6-460109376f05">
+		<queryString language="SQL">
+			<![CDATA[SELECT *
+FROM ALUMNO AL, CURSO_ALUMNO CAL
+WHERE AL.NIF = CAL.NIF]]>
+		</queryString>
+		<field name="ID_CURSO" class="java.math.BigDecimal"/>
+		<field name="LOCALIDAD" class="java.lang.String"/>
+		<field name="NIF" class="java.lang.String"/>
+	</subDataset>
+	<queryString>
+		<![CDATA[SELECT *
+FROM ALUMNO]]>
+	</queryString>
+	<field name="NIF" class="java.lang.String"/>
+	<field name="NOMBRE" class="java.lang.String"/>
+	<field name="APELLIDO1" class="java.lang.String"/>
+	<field name="APELLIDO2" class="java.lang.String"/>
+	<field name="FECHA_NACIMIENTO" class="java.sql.Timestamp"/>
+	<field name="TELEFONO" class="java.lang.String"/>
+	<field name="EMAIL" class="java.lang.String"/>
+	<field name="LOCALIDAD" class="java.lang.String"/>
+	<field name="SEXO" class="java.lang.String"/>
+	<field name="NUM_HIJOS" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="53" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="0" width="555" height="53" uuid="9c8d2721-5de7-4d25-b461-7851abfe09bc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None">
+					<font size="20" isBold="true" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[ESTADÍSTICA]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="435" y="34" width="80" height="20" uuid="6744ad6b-1aa3-4cfc-83ac-7c2dd3649823"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="515" y="34" width="40" height="20" uuid="521847f3-95af-4fb0-a528-dc8c1508931a"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="0" y="34" width="100" height="20" uuid="299d6716-0bfd-4ee8-934d-bb0ff41bd9d0"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="341">
+			<crosstab>
+				<reportElement positionType="Float" x="0" y="53" width="555" height="96" uuid="0499baa0-838a-4f53-8f3f-c95603b4d0d3"/>
+				<rowGroup name="LOCALIDAD" width="70" totalPosition="End">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{LOCALIDAD}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement style="Crosstab Data Text" x="0" y="0" width="70" height="25" uuid="854caef7-f2f5-474f-813d-b74255110c50"/>
+								<textElement verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$V{LOCALIDAD}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents backcolor="#BFE1FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<staticText>
+								<reportElement x="0" y="0" width="70" height="25" uuid="5f6a1b29-7dfc-4678-ba6d-04ad17af40a5"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Total LOCALIDAD]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<columnGroup name="SEXO" height="30" totalPosition="End">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{SEXO}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="30" uuid="8917602d-50ea-49c8-bbce-581824bb40d6"/>
+								<textElement verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$V{SEXO}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents backcolor="#BFE1FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<staticText>
+								<reportElement x="0" y="0" width="87" height="30" uuid="b3e5792d-c717-4061-b387-1de779a9b81d"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[TOTAL]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<measure name="NUM_HIJOSMeasure" class="java.math.BigDecimal" calculation="Average">
+					<measureExpression><![CDATA[$F{NUM_HIJOS}]]></measureExpression>
+				</measure>
+				<crosstabCell width="50" height="25">
+					<cellContents>
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField pattern="###0.00">
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" uuid="ea69f470-a330-49d0-aaf7-d827011f1b86"/>
+							<textElement verticalAlignment="Middle"/>
+							<textFieldExpression><![CDATA[$V{NUM_HIJOSMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell height="25" rowTotalGroup="LOCALIDAD">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField pattern="###0.00">
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" uuid="383e92ed-2040-48a1-a2aa-ae2da9db3af5"/>
+							<textElement verticalAlignment="Middle"/>
+							<textFieldExpression><![CDATA[$V{NUM_HIJOSMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="87" columnTotalGroup="SEXO">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField pattern="###0.00">
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="87" height="25" uuid="b527ac26-6573-4db2-970c-c03bf3f84dce"/>
+							<textElement verticalAlignment="Middle"/>
+							<textFieldExpression><![CDATA[$V{NUM_HIJOSMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="87" rowTotalGroup="LOCALIDAD" columnTotalGroup="SEXO">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField pattern="###0.00">
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="87" height="25" uuid="197496d6-e06a-47fb-af77-d5481fa4206a"/>
+							<textElement verticalAlignment="Middle"/>
+							<textFieldExpression><![CDATA[$V{NUM_HIJOSMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+			</crosstab>
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="0" width="555" height="53" uuid="8569c9ad-a8d3-493e-93d7-ccd4338c9dbf"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None">
+					<font size="20" isBold="true" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Media de Hijos por Localidad y Sexo]]></text>
+			</staticText>
+			<crosstab>
+				<reportElement positionType="Float" x="0" y="230" width="555" height="96" uuid="26cb0a94-2bb2-44ef-b48c-be81606ae1f3"/>
+				<crosstabDataset>
+					<dataset>
+						<datasetRun subDataset="ALUMNOS_CURSOS_LOCALIDAD" uuid="6c6cb370-32bd-436c-b8ca-8331dc64df85">
+							<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+						</datasetRun>
+					</dataset>
+				</crosstabDataset>
+				<rowGroup name="ID_CURSO" width="70" totalPosition="End">
+					<bucket class="java.math.BigDecimal">
+						<bucketExpression><![CDATA[$F{ID_CURSO}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement style="Crosstab Data Text" x="0" y="0" width="70" height="25" uuid="8e130016-0fce-4f34-b35e-b13ce1445d9e"/>
+								<textElement verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$V{ID_CURSO}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents backcolor="#BFE1FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<staticText>
+								<reportElement x="0" y="0" width="70" height="25" uuid="006f5abc-b6c2-49f5-a535-1d93a37ccda8"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Total ID_CURSO]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<columnGroup name="LOCALIDAD" height="30" totalPosition="End">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{LOCALIDAD}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement style="Crosstab Data Text" x="0" y="0" width="88" height="30" uuid="88ba5166-0269-49e4-a258-16df8ec92c75"/>
+								<textElement verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$V{LOCALIDAD}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents backcolor="#BFE1FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<staticText>
+								<reportElement x="0" y="0" width="50" height="30" uuid="dffd8ea9-a68c-4edc-b035-66bfb3c5d3cc"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[TOTAL]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<measure name="NIFMeasure" class="java.lang.Integer" calculation="Count">
+					<measureExpression><![CDATA[$F{NIF}]]></measureExpression>
+				</measure>
+				<crosstabCell width="88" height="25">
+					<cellContents>
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="88" height="25" uuid="691ee906-6f13-4e78-86f8-975fbbd7ad1e"/>
+							<textElement verticalAlignment="Middle"/>
+							<textFieldExpression><![CDATA[$V{NIFMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="88" height="25" rowTotalGroup="ID_CURSO">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="88" height="25" uuid="9157089b-8f28-4f57-ac07-2fe166beef16"/>
+							<textElement verticalAlignment="Middle"/>
+							<textFieldExpression><![CDATA[$V{NIFMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="50" columnTotalGroup="LOCALIDAD">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" uuid="23060e4c-d032-4eb5-a060-62a3e877a623"/>
+							<textElement verticalAlignment="Middle"/>
+							<textFieldExpression><![CDATA[$V{NIFMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell rowTotalGroup="ID_CURSO" columnTotalGroup="LOCALIDAD">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" uuid="6b5cce51-a719-4f07-9d2b-b50af28d573e"/>
+							<textElement verticalAlignment="Middle"/>
+							<textFieldExpression><![CDATA[$V{NIFMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+			</crosstab>
+			<break>
+				<reportElement x="0" y="167" width="100" height="1" uuid="22a668fc-fe44-476c-a5b9-af0fbb41ffc8"/>
+			</break>
+			<staticText>
+				<reportElement positionType="Float" mode="Transparent" x="0" y="173" width="555" height="53" uuid="1559ef79-de7b-4c79-9dfd-081df7d726cb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None">
+					<font size="20" isBold="true" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Número de Personas por Curso y Localidad]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

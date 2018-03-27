@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report6.6" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e591a0e8-324d-4525-bd64-fd72f5c02167">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="ORACLE_REF_CURSOR" class="java.sql.ResultSet" isForPrompting="false"/>
+	<parameter name="P_NIF" class="java.lang.String">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<queryString language="plsql">
+		<![CDATA[{call $P{ORACLE_REF_CURSOR} := JASPER_PCK.F_OBTENER_ALUMNOS($P{P_NIF})}]]>
+	</queryString>
+	<field name="NIF" class="java.lang.String"/>
+	<field name="NOMBRE" class="java.lang.String"/>
+	<field name="APELLIDO1" class="java.lang.String"/>
+	<field name="APELLIDO2" class="java.lang.String"/>
+	<field name="FECHA_NACIMIENTO" class="java.sql.Timestamp"/>
+	<field name="TELEFONO" class="java.lang.String"/>
+	<field name="EMAIL" class="java.lang.String"/>
+	<field name="LOCALIDAD" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="53" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Transparent" x="1" y="0" width="801" height="53" uuid="9c8d2721-5de7-4d25-b461-7851abfe09bc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None">
+					<font size="20" isBold="true" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[LISTADO DE ALUMNOS]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="73" height="20" backcolor="#CCCCCC" uuid="02165124-d72c-4d56-94c6-bbb0d92f9f4a"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[NIF]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="73" y="0" width="222" height="20" backcolor="#CCCCCC" uuid="e0152c1e-496d-459c-b0f7-6dcba88afdeb"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[APELLIDOS Y NOMBRE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="295" y="0" width="119" height="20" backcolor="#CCCCCC" uuid="83bea551-160b-46fd-8bc3-aa480b3a211e"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA NACIMIENTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="505" y="0" width="84" height="20" backcolor="#CCCCCC" uuid="ed3baff2-4571-490d-a231-d5bd5bd46cbf"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TELÉFONO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="589" y="0" width="213" height="20" backcolor="#CCCCCC" uuid="147e63d2-bda8-49a7-8ea2-284ef9012cbd"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[EMAIL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="414" y="0" width="91" height="20" backcolor="#CCCCCC" uuid="95799269-f3ee-41d9-b7ba-1afb16fec317"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[LOCALIDAD]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="73" height="20" uuid="fb219bab-5dc6-46ed-873f-dc08cb76e1c2"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NIF}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="73" y="0" width="222" height="20" uuid="cf9e18ad-5a5d-42a7-b8dd-e7fe503ed496"/>
+				<box leftPadding="5">
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{APELLIDO1} + " " + $F{APELLIDO2} + ", " + $F{NOMBRE}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="295" y="0" width="119" height="20" uuid="854bcb9f-9d73-4416-a9e2-74dd97d5da76"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{FECHA_NACIMIENTO}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="505" y="0" width="84" height="20" uuid="3ed49a86-82f2-4216-a5e1-e03c6305dc1d"/>
+				<box leftPadding="0">
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{TELEFONO}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="589" y="0" width="213" height="20" uuid="facbf13f-b72c-4e0a-848f-32e109660f87"/>
+				<box leftPadding="5">
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{EMAIL}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="414" y="0" width="91" height="20" uuid="b46f3039-0ccd-40ef-b0db-10ffe8c78dac"/>
+				<box leftPadding="0">
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{LOCALIDAD}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="681" y="34" width="80" height="20" uuid="6744ad6b-1aa3-4cfc-83ac-7c2dd3649823"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="761" y="34" width="40" height="20" uuid="521847f3-95af-4fb0-a528-dc8c1508931a"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="0" y="34" width="100" height="20" uuid="299d6716-0bfd-4ee8-934d-bb0ff41bd9d0"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

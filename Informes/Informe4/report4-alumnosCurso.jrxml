@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report4-alumnosCurso" pageWidth="555" pageHeight="842" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="e591a0e8-324d-4525-bd64-fd72f5c02167">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="P_ID_CURSO" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT AL.*
+FROM ALUMNO AL, CURSO_ALUMNO CAL
+WHERE AL.NIF = CAL.NIF
+AND ID_CURSO = $P{P_ID_CURSO}
+ORDER BY AL.NIF]]>
+	</queryString>
+	<field name="NIF" class="java.lang.String"/>
+	<field name="NOMBRE" class="java.lang.String"/>
+	<field name="APELLIDO1" class="java.lang.String"/>
+	<field name="APELLIDO2" class="java.lang.String"/>
+	<field name="FECHA_NACIMIENTO" class="java.sql.Timestamp"/>
+	<field name="TELEFONO" class="java.lang.String"/>
+	<field name="EMAIL" class="java.lang.String"/>
+	<field name="LOCALIDAD" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="40">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="20" width="73" height="20" backcolor="#CCCCCC" uuid="02165124-d72c-4d56-94c6-bbb0d92f9f4a"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[NIF]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="73" y="20" width="482" height="20" backcolor="#CCCCCC" uuid="e0152c1e-496d-459c-b0f7-6dcba88afdeb"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[NOMBRE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="20" backcolor="#CCCCCC" uuid="4255c9a6-9f43-47f1-b774-d35f942eb8c1"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[ALUMNOS DEL CURSO]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="73" height="20" uuid="fb219bab-5dc6-46ed-873f-dc08cb76e1c2"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NIF}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="73" y="0" width="482" height="20" uuid="cf9e18ad-5a5d-42a7-b8dd-e7fe503ed496"/>
+				<box leftPadding="5">
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{APELLIDO1} + " " + $F{APELLIDO2} + ", " + $F{NOMBRE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

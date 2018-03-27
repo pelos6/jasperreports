@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report5-cursosAlumno" pageWidth="555" pageHeight="842" whenNoDataType="NoDataSection" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="e591a0e8-324d-4525-bd64-fd72f5c02167">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="P_NIF" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["11111111A"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT CUR.ID_CURSO,
+	CUR.NOMBRE NOMBRE_CURSO,
+	CAS.ID_ASIGNATURA,
+	CAS.NOMBRE NOMBRE_ASIGNATURA,
+	CAL.FECHA_MATRICULA,
+	CAL.CALIFICACION,
+	CAA.NOTA,
+	CAA.OBSERVACIONES
+FROM CURSO CUR, CURSO_ALUMNO CAL, CURSO_ASIGNATURA CAS, CURSO_ASIGNATURA_ALUMNO CAA
+WHERE CUR.ID_CURSO = CAL.ID_CURSO
+AND CUR.ID_CURSO = CAS.ID_CURSO
+AND CAA.ID_CURSO = CAS.ID_CURSO
+AND CAA.ID_ASIGNATURA = CAS.ID_ASIGNATURA
+AND CAA.NIF = CAL.NIF
+AND CAL.NIF = $P{P_NIF}
+ORDER BY CUR.ID_CURSO, CAS.ID_ASIGNATURA]]>
+	</queryString>
+	<field name="ID_CURSO" class="java.math.BigDecimal"/>
+	<field name="NOMBRE_CURSO" class="java.lang.String"/>
+	<field name="ID_ASIGNATURA" class="java.math.BigDecimal"/>
+	<field name="NOMBRE_ASIGNATURA" class="java.lang.String"/>
+	<field name="FECHA_MATRICULA" class="java.sql.Timestamp"/>
+	<field name="CALIFICACION" class="java.math.BigDecimal"/>
+	<field name="NOTA" class="java.math.BigDecimal"/>
+	<field name="OBSERVACIONES" class="java.lang.String"/>
+	<group name="G_ID_CURSO" isStartNewPage="true">
+		<groupExpression><![CDATA[$F{ID_CURSO}]]></groupExpression>
+		<groupHeader>
+			<band height="100">
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="80" width="269" height="20" backcolor="#CCCCCC" uuid="e0152c1e-496d-459c-b0f7-6dcba88afdeb"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[ASIGNATURA]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="60" width="555" height="20" backcolor="#CCCCCC" uuid="4255c9a6-9f43-47f1-b774-d35f942eb8c1"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[ASIGNATURAS DEL CURSO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="269" y="80" width="66" height="20" backcolor="#CCCCCC" uuid="d32603b9-0986-4b13-ab87-6aa75ff6eb6c"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[NOTA]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="335" y="80" width="220" height="20" backcolor="#CCCCCC" uuid="e3508d80-25e1-417d-89c4-9196a6cf3316"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[OBSERVACIONES]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="0" y="15" width="555" height="20" uuid="cb6a9a48-920c-4d7e-b2bb-3690f4534ebc"/>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true" isStrikeThrough="false" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA["CURSO: " + $F{ID_CURSO} + " - " + $F{NOMBRE_CURSO}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="0" y="35" width="555" height="20" uuid="2ee7f5b3-5fd4-4394-86e0-53ca7d40f7bf"/>
+					<textElement verticalAlignment="Middle" markup="none">
+						<font isBold="true" isStrikeThrough="false" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA["CALIFICACIÓN: " + $F{CALIFICACION}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="269" height="20" uuid="cf9e18ad-5a5d-42a7-b8dd-e7fe503ed496"/>
+				<box leftPadding="5">
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{NOMBRE_ASIGNATURA}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement stretchType="RelativeToBandHeight" x="269" y="0" width="66" height="20" uuid="b4afb0c1-f1ac-45d7-b7a3-79eb01934ff2"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{NOTA}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="335" y="0" width="220" height="20" uuid="9ee9da4f-c37f-4b08-bbff-d9c0f19f7d62"/>
+				<box leftPadding="5">
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{OBSERVACIONES}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<noData>
+		<band height="20">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="20" backcolor="#CCCCCC" uuid="20f0d675-1b84-4884-8b46-7ff90ea88be0"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[EL ALUMNO NO SE HA MATRICULADO EN NINGÚN CURSO]]></text>
+			</staticText>
+		</band>
+	</noData>
+</jasperReport>
